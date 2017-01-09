@@ -27,4 +27,25 @@ function loop(x)
     button[x].style.oTransform = "rotateY(180deg)"; 
   }
 
+  setTimeout(function()
+  {
+    ctx[x].lineWidth = 3;
+    ctx[x].beginPath();
+    ctx[x].moveTo(10,10);
+    ctx[x].lineTo(90,90);
+    ctx[x].moveTo(90,10);
+    ctx[x].lineTo(10,90);
+    ctx[x].stroke();
+    ctx[x].closePath();
+
+    // computerTurn();
+  }, 300);
+
+  // checkWinner();
 }
+
+
+
+
+
+
