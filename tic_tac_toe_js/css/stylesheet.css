@@ -1,14 +1,18 @@
+body {
+  text-align: center;
+  background-color: #1c1c1c;
+  font-family: 'Roboto', sans-serif;
+}
+
 .center {
     margin: 5px auto 90px;
     text-align: center;
 }
 
-body {
-  text-align: center;
-}
-
 .title {
-  padding: 10px;
+  font-size: 90px;
+  padding: 40px;
+  color: white;
 }
 
 canvas {
@@ -18,6 +22,7 @@ canvas {
   -webkit-transition: -o-transform 1s;
   -webkit-transition: -moz-transform 1s;
   -webkit-transition: transform 1s;
+  box-shadow: 20px 20px 50px #1c1c1c;
 }
 
 canvas:hover {
@@ -27,11 +32,12 @@ canvas:hover {
 
 #reloadButton {
   text-decoration: none;
-  color: black;
-  font: 20px tahoma;
+  color: white;
+  font: 30px tahoma;
 }
 
 #reloadButton:hover {
-  font-size: 22px;
+  font-size: 35px;
+  text-shadow: 5px 10px 30px white;
 }
 
