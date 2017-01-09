@@ -1,13 +1,33 @@
 .center {
-    margin: auto;
+    margin: 5px auto 90px;
     text-align: center;
 }
 
-canvas {
-  border: 3px solid black;
+body {
+  text-align: center;
 }
 
-h1 {
-  padding-top: 10px;
-  padding-bottom: 40px;
+.title {
+  padding: 10px;
 }
+
+canvas {
+  background: skyblue;
+  -webkit-transition: -webkit-transform 2s;
+}
+
+canvas:hover {
+  width: 102px;
+  height: 98px;
+}
+
+reloadButton {
+  text-decoration: none;
+  color: black;
+  font: 20px tahoma;
+}
+
+#reloadButton:hover {
+  font-size: 22px;
+}
+
