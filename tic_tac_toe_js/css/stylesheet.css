@@ -14,6 +14,10 @@ body {
 canvas {
   background: skyblue;
   -webkit-transition: -webkit-transform 1s;
+  -webkit-transition: -ms-transform 1s;
+  -webkit-transition: -o-transform 1s;
+  -webkit-transition: -moz-transform 1s;
+  -webkit-transition: transform 1s;
 }
 
 canvas:hover {
