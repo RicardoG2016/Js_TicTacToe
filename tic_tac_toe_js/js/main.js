@@ -1,3 +1,5 @@
+var turnCount = 0;
+
 var button = [];
 for (var i = 1; i < 10; i++) button[i] = document.getElementById('canvas'+i);
 
@@ -18,7 +20,7 @@ function loop(x){
 
 // content[x] is used to decide winner with winner function.
     content[x] = 'x';
-
+    turnCount ++;
 // rotateY created animation when button is clicked
     button[x].style.Transform = "rotateY(180deg)"; 
     button[x].style.webkitTransform = "rotateY(180deg)"; 
@@ -35,13 +37,13 @@ function loop(x){
     ctx[x].lineTo(10,90);
     ctx[x].stroke();
     ctx[x].closePath();
-    computerTurn();
+    if (turnCount < 9 && isResult == false) computerTurn();
     checkWinner();
   }, 300)};
 }  
 
 function computerTurn(){
-    var r = Math.random();
+  var r = Math.random();
     if(r < 0.1 && !bDisabled[1]) draw0Steps(1);
     else if(r < 0.2 && !bDisabled[2]) draw0Steps(2);
     else if(r < 0.3 && !bDisabled[3]) draw0Steps(3);
@@ -53,11 +55,12 @@ function computerTurn(){
     else if(r < 0.1 && !bDisabled[9]) draw0Steps(9);
     else computerTurn();
   }
-
+    
 function draw0Steps(x){
   bDisabled[x] = true;
   button[x].style.opacity = 0.7;
   content[x] = 'o';
+  turnCount ++;
   button[x].style.webkitTransform = "rotateX(180deg)";
 
   setTimeout(function(){
@@ -67,7 +70,6 @@ function draw0Steps(x){
    ctx[x].stroke();
     ctx[x].closePath();
   }, 300);
-  
 };
 
   function checkWinner(){
@@ -88,13 +90,15 @@ function draw0Steps(x){
       else if (content[3] == 'o' && content[6] == 'o' && content[9] == 'o') showWinner('You Lost!');
       else if (content[1] == 'o' && content[5] == 'o' && content[9] == 'o') showWinner('You Lost!');
       else if (content[3] == 'o' && content[5] == 'o' && content[7] == 'o') showWinner('You Lost!');
+      else if (turnCount == 9) showWinner('Draw!!');
     };
   };
 
   function showWinner(x){
     setTimeout(function(){
-      alert(x)
       isResult = true;
+      alert(x)
+      for (var i = 1; i < 10; i++) bDisabled[i] = true;
     }, 350);
   };
 
