@@ -1,11 +1,16 @@
 # Review Repo
-Description: Repo contains various exercises intended to provide review on various tools and technologies. They tools and technologies that will be used inlcude:
-  *HTML5/CSS3
-  *Javascript
-  *Node.js
-  *Express.js
-  *React
-  *JQuery
-  *Ruby
-  *Rails
-  *Various Rails Gems
+###Description: 
+Repo will contain various exercises intended as review on various tools and technologies. The tools and technologies that will be used inlcude but are not limited to:
+* HTML5/CSS3
+* Javascript
+* Node.js
+* Express.js
+* React
+* JQuery
+* Ruby
+* Rails
+* Various Rails Gems
+* AWS (Amazon Web Services)
+* Alexa SDK
+* Lambda (AWS)
+* IoT (Internet of things)
