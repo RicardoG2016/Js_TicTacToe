@@ -11,24 +11,22 @@ var isResult = false;
 var content = [];
 
 // x = the clicked canvas button.
-function loop(x)
-{
-  if(bDisabled[x] == false)
-  {
+function loop(x){
+  if(bDisabled[x] == false){
     bDisabled[x] = true;
     button[x].style.opacity = 0.7;
+
 // content[x] is used to decide winner with winner function.
     content[x] = 'x';
+
 // rotateY created animation when button is clicked
     button[x].style.Transform = "rotateY(180deg)"; 
     button[x].style.webkitTransform = "rotateY(180deg)"; 
     button[x].style.msTransform = "rotateY(180deg)"; 
     button[x].style.mozTransform = "rotateY(180deg)"; 
     button[x].style.oTransform = "rotateY(180deg)"; 
-  }
 
-  setTimeout(function()
-  {
+  setTimeout(function(){
     ctx[x].lineWidth = 3;
     ctx[x].beginPath();
     ctx[x].moveTo(10,10);
@@ -37,13 +35,68 @@ function loop(x)
     ctx[x].lineTo(10,90);
     ctx[x].stroke();
     ctx[x].closePath();
+    computerTurn();
+    checkWinner();
+  }, 300)};
+}  
 
-    // computerTurn();
+function computerTurn(){
+    var r = Math.random();
+    if(r < 0.1 && !bDisabled[1]) draw0Steps(1);
+    else if(r < 0.2 && !bDisabled[2]) draw0Steps(2);
+    else if(r < 0.3 && !bDisabled[3]) draw0Steps(3);
+    else if(r < 0.4 && !bDisabled[4]) draw0Steps(4);
+    else if(r < 0.5 && !bDisabled[5]) draw0Steps(5);
+    else if(r < 0.6 && !bDisabled[6]) draw0Steps(6);
+    else if(r < 0.7 && !bDisabled[7]) draw0Steps(7);
+    else if(r < 0.8 && !bDisabled[8]) draw0Steps(8);
+    else if(r < 0.1 && !bDisabled[9]) draw0Steps(9);
+    else computerTurn();
+  }
+
+function draw0Steps(x){
+  bDisabled[x] = true;
+  button[x].style.opacity = 0.7;
+  content[x] = 'o';
+  button[x].style.webkitTransform = "rotateX(180deg)";
+
+  setTimeout(function(){
+   ctx[x].beginPath();
+   ctx[x].lineWidth = 3;
+   ctx[x].arc(50,50,34,0,Math.PI*2,false);
+   ctx[x].stroke();
+    ctx[x].closePath();
   }, 300);
+  
+};
 
-  // checkWinner();
-}
+  function checkWinner(){
+    if (isResult == false){
+      if (content[1] == 'x' && content[2] == 'x' && content[3] == 'x') showWinner('You Win!');
+      else if (content[4] == 'x' && content[5] == 'x' && content[6] == 'x') showWinner('You Win!');
+      else if (content[7] == 'x' && content[8] == 'x' && content[9] == 'x') showWinner('You Win!');
+      else if (content[1] == 'x' && content[4] == 'x' && content[7] == 'x') showWinner('You Win!');
+      else if (content[2] == 'x' && content[5] == 'x' && content[8] == 'x') showWinner('You Win!');
+      else if (content[3] == 'x' && content[6] == 'x' && content[9] == 'x') showWinner('You Win!');
+      else if (content[1] == 'x' && content[5] == 'x' && content[9] == 'x') showWinner('You Win!');
+      else if (content[3] == 'x' && content[5] == 'x' && content[7] == 'x') showWinner('You Win!');
+      else if (content[1] == 'o' && content[2] == 'o' && content[3] == 'o') showWinner('You Lost!');
+      else if (content[4] == 'o' && content[5] == 'o' && content[6] == 'o') showWinner('You Lost!');
+      else if (content[7] == 'o' && content[8] == 'o' && content[9] == 'o') showWinner('You Lost!');
+      else if (content[1] == 'o' && content[4] == 'o' && content[7] == 'o') showWinner('You Lost!');
+      else if (content[2] == 'o' && content[5] == 'o' && content[8] == 'o') showWinner('You Lost!');
+      else if (content[3] == 'o' && content[6] == 'o' && content[9] == 'o') showWinner('You Lost!');
+      else if (content[1] == 'o' && content[5] == 'o' && content[9] == 'o') showWinner('You Lost!');
+      else if (content[3] == 'o' && content[5] == 'o' && content[7] == 'o') showWinner('You Lost!');
+    };
+  };
 
+  function showWinner(x){
+    setTimeout(function(){
+      alert(x)
+      isResult = true;
+    }, 350);
+  };
 
 
 
