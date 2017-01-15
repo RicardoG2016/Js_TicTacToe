@@ -1,6 +1,7 @@
 # Rails Blog Application
 
-* The blog is intended to show proficiency in the various tools below:
+The blog is intended to show proficiency in the various tools below:
+
 * Ruby
 * Rails
 * HTML
